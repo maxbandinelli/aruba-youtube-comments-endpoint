@@ -7,24 +7,15 @@ on:
     - cron: "0 7 * * *"
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: false
+  contents: write
 
 jobs:
-  build-endpoint:
+  update-youtube-comments:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Set up Pages
-        uses: actions/configure-pages@v5
 
       - name: Generate YouTube comments JSON
         env:
@@ -32,19 +23,23 @@ jobs:
           YOUTUBE_CHANNEL_ID: ${{ secrets.YOUTUBE_CHANNEL_ID }}
           MAX_RESULTS: "30"
         run: |
+          mkdir -p output
           python3 scripts/youtube_comments_monitor.py
 
-      - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: public
+      - name: Move generated files to output
+        run: |
+          mkdir -p output
+          if [ -f public/youtube-comments-latest.json ]; then
+            mv public/youtube-comments-latest.json output/youtube-comments-latest.json
+          fi
+          if [ -f public/youtube-comments-digest.md ]; then
+            mv public/youtube-comments-digest.md output/youtube-comments-digest.md
+          fi
 
-  deploy:
-    needs: build-endpoint
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-
-    steps:
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+      - name: Commit updated files
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add output/youtube-comments-latest.json output/youtube-comments-digest.md
+          git commit -m "Update YouTube comments endpoint" || echo "No changes to commit"
+          git push
