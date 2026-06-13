@@ -1,6 +1,15 @@
 # YouTube comments digest
 
-Generated at: 2026-06-12T08:52:23.856352+00:00
+Generated at: 2026-06-13T08:14:51.822372+00:00
+
+## @davidcoyote5612
+
+- Video: https://www.youtube.com/watch?v=NrNR5qKesRc
+- Published: 2026-06-12T23:36:53Z
+- Likes: 0
+- Replies: 0
+
+Bel casino: non potete farlo voi a pagamento?
 
 ## @marcofortunato3328
 

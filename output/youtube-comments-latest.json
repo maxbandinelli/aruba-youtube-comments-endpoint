@@ -1,10 +1,22 @@
 {
   "ok": true,
-  "generated_at": "2026-06-12T08:52:23.856352+00:00",
+  "generated_at": "2026-06-13T08:14:51.822372+00:00",
   "source": "youtube",
   "channel_id": "UCIVsRwTbHUjxjrdUYoTEEQg",
-  "count": 4,
+  "count": 5,
   "items": [
+    {
+      "comment_id": "UgzQ-AaC17j7NCSSMIh4AaABAg",
+      "video_id": "NrNR5qKesRc",
+      "video_url": "https://www.youtube.com/watch?v=NrNR5qKesRc",
+      "author": "@davidcoyote5612",
+      "author_channel_url": "http://www.youtube.com/@davidcoyote5612",
+      "published_at": "2026-06-12T23:36:53Z",
+      "updated_at": "2026-06-12T23:36:53Z",
+      "text": "Bel casino: non potete farlo voi a pagamento?",
+      "like_count": 0,
+      "total_reply_count": 0
+    },
     {
       "comment_id": "UgxE97yra3CAOpnAQDB4AaABAg",
       "video_id": "IM_gYhkvY_I",
